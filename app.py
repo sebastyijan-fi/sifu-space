@@ -1,13 +1,13 @@
+import json
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from openai import OpenAI
-import base64
 import uuid
-import json
-import os
 import logging
 from dotenv import load_dotenv
-from regex import parse_analysis_response
+import os
+from combine import combine_data
+from logic import process_combined_data
 
 load_dotenv()
 
@@ -21,54 +21,77 @@ app = Flask(__name__)
 CORS(app)
 logging.basicConfig(level=logging.INFO)
 
+# List of questions
+questions = [
+    "Basic Business Idea: Describe the business concept.",
+    "Key Objectives: List the objectives.",
+    "Core Product or Service: Define the product or service.",
+    "Target Audience: Identify the target audience.",
+    "Key Value Proposition: State the value proposition.",
+    "Major Revenue Streams: Describe potential revenue streams.",
+    "Primary Costs: Detail the primary costs.",
+    "Notable Features or Benefits: Outline notable features or benefits.",
+    "Key Challenges or Problems Addressed: List key challenges or problems.",
+    "Basic Competitive Advantage: Explain the competitive advantage."
+]
+
 @app.route('/upload', methods=['POST'])
 def upload_image():
-    if 'image' not in request.files:
-        return 'No image file provided', 400
-
-    image_file = request.files['image']
-    image_data = base64.b64encode(image_file.read()).decode('utf-8')
-    data_url = f"data:image/jpeg;base64,{image_data}"
-
     try:
-        image_message = {
-            "role": "user",
-            "content": [
-{
-    "type": "text",
-    "text": "This image is a user-uploaded sketch representing an initial business idea, combining both text and drawings. Please provide a concise analysis directly following each numbered item, without additional elaboration or context. Format your response with each point's number followed by the answer: 1. Basic Business Idea: Describe the business concept. 2. Key Objectives: List the objectives. 3. Core Product or Service: Define the product or service. 4. Target Audience: Identify the target audience. 5. Key Value Proposition: State the value proposition. 6. Major Revenue Streams: Describe potential revenue streams. 7. Primary Costs: Detail the primary costs. 8. Notable Features or Benefits: Outline notable features or benefits. 9. Key Challenges or Problems Addressed: List key challenges or problems. 10. Basic Competitive Advantage: Explain the competitive advantage."
-}
-,
-                {"type": "image_url", "image_url": {"url": data_url}},
-            ]
-        }
+        if not request.json or 'imageUrl' not in request.json:
+            app.logger.error("No image URL provided in the request")
+            return 'No image URL provided', 400
 
-        analysis_response = client.chat.completions.create(
-            model="gpt-4-vision-preview",
-            messages=[image_message],
-        )
+        image_url = request.json['imageUrl']
 
-        # Log the complete response to the terminal
-        logging.info(f"OpenAI API Response: {analysis_response.choices[0].message}")
+        parsed_responses = {}
+        for question in questions:
+            image_message = {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": "This image depicts a user-uploaded sketch outlining an initial business idea, incorporating both textual descriptions and visual elements. Your task is to deliver a succinct analysis, providing only the response without any additional information or context. ONLY RESPOND WITH THE ANSWER NOTHING ELSE, must reply! Max 50 words " + question
+                    },
+                    {
+                        "type": "image_url",
+                        "image_url": {"url": image_url}
+                    },
+                ]
+            }
 
-        # Ensure the response is correctly accessed
-        response_content = analysis_response.choices[0].message.content  # Access content directly, without ['content']
-        response_text = response_content if response_content else ""
+            analysis_response = client.chat.completions.create(
+                model="gpt-4-vision-preview",
+                messages=[image_message],
+            )
 
-        # Generate a unique ID for the call and parse the response
+            response_text = analysis_response.choices[0].message.content.strip()
+            parsed_responses[question] = response_text
+            app.logger.info(f"Extracted response for question: {question}")
+
         call_id = str(uuid.uuid4())
-        parsed_response = parse_analysis_response(response_text)
-        
-        # Save the parsed response to a JSON file
-        with open(f"{call_id}.json", "w") as json_file:
-            json_file.write(parsed_response)
+        json_file_path = f"{call_id}.json"
+        app.logger.info(f"Writing parsed responses to {json_file_path}")
+        with open(json_file_path, "w") as json_file:
+            json.dump(parsed_responses, json_file, indent=4)
+        app.logger.info(f"Successfully wrote parsed responses to {json_file_path}")
 
-        # Return the call ID and the parsed response
-        return jsonify({"call_id": call_id, "data": json.loads(parsed_response)}), 200
+        app.logger.info("Combining data")
+        combined_data = combine_data(json_file_path)
+        app.logger.info("Data combined successfully")
+
+        app.logger.info("Processing combined data")
+        process_combined_data(combined_data)
+        app.logger.info("Combined data processed successfully")
+
+        return 'Combined data processed successfully', 200
 
     except Exception as e:
-        app.logger.error(f"Error uploading image: {str(e)}")
-        return 'Internal Server Error', 500
+        error_msg = f"Error processing image: {e}"
+        app.logger.error(error_msg)
+        app.logger.error(f"Type of problematic data: {type(e).__name__}")
+        app.logger.error(f"Value: {e.args}")
+        return jsonify(error=error_msg), 500
 
-if __name__ == '__main__':
-    app.run(debug=True, port=5001)
+if __name__ == "__main__":
+    app.run(port=5001, debug=True)

@@ -1,0 +1,122 @@
+{
+    "Basic Business Idea: Describe the business concept.": [
+        "Industry trends influencing the idea.",
+        "Potential market niches and gaps the idea fills.",
+        "Comparative analysis with similar market offerings.",
+        "Customer needs and expectations addressed.",
+        "Potential for market disruption.",
+        "Geographic considerations for the business idea.",
+        "Technological advancements supporting the idea.",
+        "Legal and regulatory considerations.",
+        "Potential partnerships or collaborations.",
+        "Future evolution of the business idea."
+    ],
+    "Key Objectives: List the objectives.": [
+        "Specific outcomes expected from each objective.",
+        "Measurability criteria for each objective.",
+        "Achievability analysis based on current resources.",
+        "Relevance to the overall business strategy.",
+        "Time frames associated with each objective.",
+        "Prioritization of objectives.",
+        "Potential roadblocks for each objective.",
+        "Stakeholders involved in achieving each objective.",
+        "Feedback mechanisms for objective tracking.",
+        "Revision and update plans for objectives."
+    ],
+    "Core Product or Service: Define the product or service.": [
+        "Detailed feature breakdown.",
+        "User experience and design aspects.",
+        "Comparison with existing market solutions.",
+        "Integration capabilities with other products/services.",
+        "Customization options.",
+        "Technological stack used.",
+        "Service or product lifecycle.",
+        "Maintenance and support plans.",
+        "Future upgrade paths.",
+        "Intellectual property aspects."
+    ],
+    "Target Audience: Identify the target audience.": [
+        "Identification of primary and secondary market segments.",
+        "Analysis of demographic factors like age, gender, income, and occupation.",
+        "Psychographic profiling including interests, lifestyles, and values.",
+        "User needs and how the product/service fulfills these needs.",
+        "Customer pain points and how they are addressed.",
+        "Buying behavior and decision-making processes of the target audience.",
+        "Size and growth potential of the target market segments.",
+        "Communication channels preferred by the target audience.",
+        "Customer feedback mechanisms to understand audience satisfaction.",
+        "Competitive analysis to identify untapped audience segments."
+    ],
+    "Key Value Proposition: State the value proposition.": [
+        "Clarity and conciseness of the value proposition statement.",
+        "Alignment of the value proposition with customer needs and desires.",
+        "Differentiation factors from competitors' offerings.",
+        "Evidence or proof points that support the value proposition.",
+        "How the value proposition is communicated to the target audience.",
+        "Adaptability of the value proposition to market changes.",
+        "Impact of the value proposition on customer loyalty and retention.",
+        "The role of the value proposition in the customer journey.",
+        "Testing and validation methods for the value proposition.",
+        "Integration of the value proposition into branding and marketing."
+    ],
+    "Major Revenue Streams: Describe potential revenue streams.": [
+        "Detailed breakdown of each revenue stream.",
+        "Pricing strategy for each product or service offered.",
+        "Sales channel strategy and its alignment with customer preferences.",
+        "Potential for recurring revenue or subscription models.",
+        "Viability and sustainability of each revenue stream.",
+        "Dependency of revenue streams on market conditions.",
+        "Forecasting revenue growth over time.",
+        "Impact of external factors on revenue streams.",
+        "Strategies for revenue diversification.",
+        "Monitoring and optimization mechanisms for revenue streams."
+    ],
+    "Primary Costs: Detail the primary costs.": [
+        "Categorization of costs into fixed and variable.",
+        "Major cost drivers and strategies for their management.",
+        "Breakdown of startup costs.",
+        "Analysis of operational expenses.",
+        "Cost-efficiency strategies and cost reduction plans.",
+        "Financial impact of scaling the business on costs.",
+        "Break-even analysis detailing when the business will become profitable.",
+        "Monitoring and controlling costs over time.",
+        "Impact of external factors on costs.",
+        "Comparison of actual vs. projected costs for strategic planning."
+    ],
+    "Notable Features or Benefits: Outline notable features or benefits.": [
+        "Detailed description of each feature and its benefit to the user.",
+        "Uniqueness of features compared to competitors.",
+        "User experience enhancements provided by these features.",
+        "Technical innovation behind the features.",
+        "Scalability and upgradability of features.",
+        "How features contribute to the overall value proposition.",
+        "User feedback or testing results supporting the benefits.",
+        "Marketing strategies for highlighting these features.",
+        "Role of features in customer satisfaction and retention.",
+        "Future roadmap for feature enhancements."
+    ],
+    "Key Challenges or Problems Addressed: List key challenges or problems.": [
+        "Identification and prioritization of key business challenges.",
+        "Strategies and plans to address each challenge.",
+        "Potential risks associated with these challenges.",
+        "Resources required to overcome challenges.",
+        "Impact of challenges on business operations and growth.",
+        "Mitigation strategies for potential problems.",
+        "Contingency plans for unforeseen challenges.",
+        "Stakeholder involvement in problem resolution.",
+        "Monitoring and evaluation of problem-solving effectiveness.",
+        "Lessons learned and knowledge management for future challenges."
+    ],
+    "Basic Competitive Advantage: Explain the competitive advantage.": [
+        "Identification of unique selling points (USPs) providing a competitive edge.",
+        "Analysis of competitor weaknesses that the business capitalizes on.",
+        "Sustainable aspects of the competitive advantage.",
+        "Impact of the competitive advantage on market share and growth.",
+        "Strategies to maintain and enhance the competitive position.",
+        "Role of innovation in sustaining competitive advantage.",
+        "Customer perceptions of the competitive advantage.",
+        "Synergies with other business strengths to reinforce the competitive advantage.",
+        "Threats that could undermine the competitive advantage.",
+        "Monitoring and responding to competitive dynamics over time."
+    ]
+}
