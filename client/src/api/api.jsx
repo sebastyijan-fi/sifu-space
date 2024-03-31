@@ -1,27 +1,22 @@
 // api/api.jsx
+import { getStorage, ref, uploadBytes } from "firebase/storage";
 
-const BASE_URL = 'http://127.0.0.1:5001';
+// Initialize Firebase Storage
+const storage = getStorage();
 
 export const uploadImage = async (imageFile) => {
   try {
-    const formData = new FormData();
-    formData.append('image', imageFile);
+    // Create a reference to the storage location
+    const storageRef = ref(storage, `images/${imageFile.name}`);
 
-    const response = await fetch(`${BASE_URL}/upload`, {
-      method: 'POST',
-      body: formData,
-    });
+    // Upload the image file to Firebase Storage
+    const snapshot = await uploadBytes(storageRef, imageFile);
 
-    if (!response.ok) {
-      throw new Error('Failed to upload image');
-    }
+    // Get the download URL for the uploaded image
+    const downloadURL = await snapshot.ref.getDownloadURL();
 
-    const contentType = response.headers.get('content-type');
-    if (contentType && contentType.indexOf('application/json') !== -1) {
-      return await response.json(); // Return JSON data
-    } else {
-      return await response.text(); // Return plain text
-    }
+    // Return the download URL
+    return downloadURL;
   } catch (error) {
     console.error('Error uploading image:', error);
     throw error;

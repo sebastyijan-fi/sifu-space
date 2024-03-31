@@ -21,6 +21,7 @@ node_modules/
 /client/npm-debug.log
 /client/yarn-debug.log
 /client/yarn-error.log
+/client/src/firebase.jsx
 
 # Flask-specific ignores
 instance/
