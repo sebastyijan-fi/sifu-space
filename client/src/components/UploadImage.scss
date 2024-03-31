@@ -1,0 +1,32 @@
+// UploadImage.scss
+
+.upload-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.upload-container h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.upload-container input[type="file"] {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.upload-container button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.upload-container button:hover {
+  background-color: #0056b3;
+}

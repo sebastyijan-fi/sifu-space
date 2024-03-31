@@ -1,0 +1,26 @@
+// ResultDisplay.scss
+
+$result-display-container-background: #ffffff;
+$result-display-container-border: 1px solid #ccc;
+$result-display-container-padding: 20px;
+$result-display-title-color: #333;
+$result-display-title-size: 1.5rem;
+$result-display-text-color: #666;
+$result-display-text-size: 1rem;
+
+.result-display-container {
+  background-color: $result-display-container-background;
+  border: $result-display-container-border;
+  padding: $result-display-container-padding;
+}
+
+.result-display-title {
+  color: $result-display-title-color;
+  font-size: $result-display-title-size;
+  margin-bottom: 10px; // Add spacing between title and content
+}
+
+.result-display-text {
+  color: $result-display-text-color;
+  font-size: $result-display-text-size;
+}

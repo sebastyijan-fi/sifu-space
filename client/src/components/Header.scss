@@ -1,0 +1,56 @@
+$header-background-color: #282c34;
+$header-text-color: #fff;
+$header-padding: 20px;
+
+.header {
+  background-color: $header-background-color;
+  color: $header-text-color;
+  padding: $header-padding;
+  display: flex; /* Use flexbox layout */
+  justify-content: space-between; /* Space between items */
+  align-items: center; /* Vertically center items */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+  .container {
+    max-width: 1200px; /* Set a maximum width */
+    width: 100%; /* Ensure it takes up the full width of its parent */
+    margin: 0 auto; /* Center the container horizontally */
+    display: flex; /* Use flexbox layout */
+    justify-content: space-between; /* Space between items */
+    align-items: center; /* Vertically center items */
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: lighten($header-text-color, 20%);
+    }
+  }
+
+  .nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+
+  .nav-item {
+    margin-left: 20px;
+  }
+
+  .nav-link {
+    color: $header-text-color;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: lighten($header-text-color, 20%);
+    }
+  }
+}

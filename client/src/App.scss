@@ -1,0 +1,45 @@
+$primary-color: #282c34;
+$accent-color: #61dafb;
+$font-family: 'Roboto', sans-serif; // Example font family
+
+.App {
+  font-family: $font-family;
+  text-align: center;
+
+  .App-header {
+    background-color: $primary-color;
+    color: white;
+    padding: 20px; // Add padding for better spacing
+    font-size: 2rem; // Increase font size for better readability
+    text-align: center; // Center align text explicitly
+
+    .App-logo {
+      height: 20vmin; // Decrease logo size for better proportion
+      pointer-events: none;
+      margin-bottom: 20px; // Add margin for better spacing
+    }
+
+    .App-link {
+      color: $accent-color;
+      text-decoration: none; // Remove underline from links
+      &:hover {
+        text-decoration: underline; // Add underline on hover
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
