@@ -37,6 +37,7 @@ function UploadImage() {
     }
   };
 
+
   return (
     <div
       className={`upload-container ${dragging ? 'dragging' : ''}`}
