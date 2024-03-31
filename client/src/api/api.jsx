@@ -4,6 +4,9 @@ import { storage } from '../firebase';
 
 export const uploadImage = async (imageFile) => {
   try {
+    // Retrieve the user's UID from session storage
+    const uid = sessionStorage.getItem('uid');
+
     // Create a reference in Firebase Storage
     const storageRef = ref(storage, `images/${imageFile.name}`);
 
@@ -13,13 +16,13 @@ export const uploadImage = async (imageFile) => {
     // Get the download URL for the uploaded image
     const downloadURL = await getDownloadURL(snapshot.ref);
 
-    // Send the download URL to your Flask backend
+    // Send the download URL and the user's UID to your Flask backend
     const response = await fetch('http://127.0.0.1:5001/upload', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ imageUrl: downloadURL }),
+      body: JSON.stringify({ imageUrl: downloadURL, uid: uid }),
     });
 
     if (!response.ok) {

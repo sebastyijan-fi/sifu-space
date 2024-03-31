@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // Initialize the useNavigate hook
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -15,6 +15,8 @@ function Login() {
         // Signed in
         const user = userCredential.user;
         console.log(user);
+        // Store user's UID in the session storage or context
+        sessionStorage.setItem('uid', user.uid);
         // Redirect to home page or dashboard
         navigate('/'); // Navigate to the main page
       })
